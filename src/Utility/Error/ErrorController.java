@@ -45,7 +45,7 @@ public class ErrorController {
                 error = "Error Number #03, You must enterd a Password";
                 break;
             case 4:
-                error = "Error Number #04, You must select a Alarm to use that option" + "/n if there are no lines you can choose add a login";
+                error = "Error Number #04, You must select an object to use that option" + "/n if there are no lines you shuld add objects";
                 break;
             default:
                 error = "Error not specified";
