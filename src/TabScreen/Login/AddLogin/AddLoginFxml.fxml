@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:id="AddLoginPane" prefHeight="150.0" prefWidth="300.0"
+            xmlns="http://javafx.com/javafx/8" fx:controller="TabScreen.Login.AddLogin.AddLoginController">
+    <children>
+        <Label layoutX="100.0" layoutY="10.0" text="Add New Login:">
+            <font>
+                <Font name="Georgia" size="14.0"/>
+            </font>
+        </Label>
+        <Label layoutX="20.0" layoutY="40.0" prefHeight="20.0" prefWidth="65.0" text="User Name:"/>
+        <Label layoutX="20.0" layoutY="75.0" prefHeight="20.0" prefWidth="65.0" text="Password:"/>
+        <Label layoutX="20.0" layoutY="110.0" prefHeight="20.0" prefWidth="65.0" text="Url:"/>
+        <TextField fx:id="UserName" layoutX="95.0" layoutY="40.0" prefHeight="25.0" prefWidth="195.0"
+                   promptText="Enter user name"/>
+        <TextField fx:id="PassWord" layoutX="95.0" layoutY="75.0" prefHeight="25.0" prefWidth="195.0"
+                   promptText="Enter password"/>
+        <TextField fx:id="SiteURL" layoutX="95.0" layoutY="110.0" prefHeight="25.0" prefWidth="195.0"
+                   promptText="Enter site URL"/>
+        <Button layoutX="20.0" layoutY="5.0" mnemonicParsing="false" onAction="#Add" prefHeight="25.0" prefWidth="55.0"
+                text="Add"/>
+        <Button fx:id="Close" layoutX="235.0" layoutY="5.0" mnemonicParsing="false" onAction="#Cancel"
+                prefHeight="25.0" prefWidth="55.0" text="Cancel"/>
+    </children>
+</AnchorPane>

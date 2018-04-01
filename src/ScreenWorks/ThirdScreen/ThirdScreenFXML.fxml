@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:id="rootPane" prefHeight="250.0" prefWidth="600.0"
+            xmlns="http://javafx.com/javafx/8" fx:controller="ScreenWorks.ThirdScreen.ThirdScreenController">
+    <children>
+        <Button fx:id="Back" alignment="CENTER" contentDisplay="CENTER" layoutX="250.0" layoutY="20.0"
+                mnemonicParsing="false" onAction="#goBack" prefHeight="30.0" prefWidth="50.0" text="Back"
+                textAlignment="CENTER"/>
+        <Label layoutX="245.0" layoutY="70.0" text="that is the 3rd"/>
+        <Button fx:id="Add" alignment="CENTER" contentDisplay="CENTER" layoutX="250.0" layoutY="200.0"
+                mnemonicParsing="false" onAction="#Add" prefHeight="30.0" prefWidth="50.0" text="Add"
+                textAlignment="CENTER"/>
+        <Label layoutX="240.0" layoutY="100.0" text="Enter a message:"/>
+        <TextField fx:id="Line" alignment="CENTER" layoutX="10.0" layoutY="140.0" prefHeight="39.0" prefWidth="580.0"
+                   promptText="Your message"/>
+    </children>
+</AnchorPane>
