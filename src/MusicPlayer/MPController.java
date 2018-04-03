@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.Media;
@@ -22,6 +23,8 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
+import java.time.Duration;
 
 import static javafx.scene.media.MediaPlayer.Status.PLAYING;
 
@@ -31,6 +34,9 @@ public class MPController {
 
     @FXML
     private ListView<String> MP3List;
+
+    @FXML
+    private static CheckBox repeat;
 
     /*List*/
     private ObservableList<String> MFObservableList = FXCollections.observableArrayList();
@@ -57,7 +63,7 @@ public class MPController {
     private String ErrorFilelocation = "Java/src/Utility/Error/Error.txt";
     private OpenNewWindow open = new OpenNewWindow();
     private CommonCommands CC=new CommonCommands();
-    private MediaPlayer mediaPlayer;
+    private static MediaPlayer mediaPlayer;
     private int playingindex=-1;
 
     @FXML
@@ -71,6 +77,7 @@ public class MPController {
 
     @FXML
     void Play(ActionEvent event) {
+        repeating();
         if (playingindex<0){playingindex=0;}
         if (mediaPlayer!=null&&mediaPlayer.getStatus().equals(PLAYING)){mediaPlayer.stop();}
         else{
@@ -82,6 +89,7 @@ public class MPController {
 
     @FXML
     void PlayNext(ActionEvent event) {
+        repeating();
         if (mediaPlayer!=null&&mediaPlayer.getStatus().equals(PLAYING)){mediaPlayer.stop();}
         if (playingindex+1>MFL.getMFList().size()-1){playingindex=0;}
         else {playingindex++;}
@@ -136,4 +144,10 @@ public class MPController {
         }
         return valid;
     }
+
+    private static void repeating(){
+        if (repeat.isSelected()){
+            mediaPlayer.setCycleCount(1000);}
+    }
+
 }
