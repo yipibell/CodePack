@@ -30,6 +30,6 @@
       <Button layoutX="15.0" layoutY="200.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Play" prefWidth="125.0" text="Play/Stop" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="5.0" />
       <Button layoutX="15.0" layoutY="200.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#PlayNext" prefWidth="125.0" text="Next" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="5.0" />
       <Button layoutY="57.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Back" prefWidth="150.0" text="Back" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" />
-      <CheckBox fx:id="Repit" layoutX="5.0" layoutY="9.0" mnemonicParsing="false" text="Repeat " AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="10.0" />
+      <CheckBox fx:id="repeat" layoutX="5.0" layoutY="9.0" mnemonicParsing="false" text="Repeat " AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="10.0" />
     </children>
 </AnchorPane>

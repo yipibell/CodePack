@@ -36,7 +36,7 @@ public class MPController {
     private ListView<String> MP3List;
 
     @FXML
-    private static CheckBox repeat;
+    private  CheckBox repeat;
 
     /*List*/
     private ObservableList<String> MFObservableList = FXCollections.observableArrayList();
@@ -77,19 +77,18 @@ public class MPController {
 
     @FXML
     void Play(ActionEvent event) {
-        repeating();
         if (playingindex<0){playingindex=0;}
         if (mediaPlayer!=null&&mediaPlayer.getStatus().equals(PLAYING)){mediaPlayer.stop();}
         else{
             playingindex=MP3List.getSelectionModel().getSelectedIndex();
             mediaPlayer = new MediaPlayer(new Media(new File(MFL.getMFList().get(playingindex).getMusicFileLocation()).toURI().toString()));
+            rep();
             mediaPlayer.play();
         }
     }
 
     @FXML
     void PlayNext(ActionEvent event) {
-        repeating();
         if (mediaPlayer!=null&&mediaPlayer.getStatus().equals(PLAYING)){mediaPlayer.stop();}
         if (playingindex+1>MFL.getMFList().size()-1){playingindex=0;}
         else {playingindex++;}
@@ -145,9 +144,10 @@ public class MPController {
         return valid;
     }
 
-    private static void repeating(){
+    private void rep(){
         if (repeat.isSelected()){
-            mediaPlayer.setCycleCount(1000);}
+            mediaPlayer.setCycleCount(10000);
+        }
     }
 
 }
