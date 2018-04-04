@@ -12,11 +12,10 @@ public class MusicFileList {
 
     private String SecretKey="MP3";
     private FileEditing fe = new FileEditing();
-    private String SaveFilelocation="/JAVA/new window/src/MusicPlayer/MusicFile/SaveMPList.smp";
-    private String SelectedSaveFilelocation="/JAVA/new window/src/MusicPlayer/MusicFile/OperetedMPList.smp";
+    private String SaveFilelocation = "/Users/why2blue/IdeaProjects/CodePack/src/MusicPlayer/MusicFile/SaveMPList.smp";
+    private String SelectedSaveFilelocation = "/Users/why2blue/IdeaProjects/CodePack/src/MusicPlayer/MusicFile/OperetedMPList.smp";
 
     /*Music File List actions*/
-
     public void SaveMFList() {
         String saveMF = "";
         for (MusicFile file : MFList) {
@@ -29,7 +28,8 @@ public class MusicFileList {
 
     public void LoadMFList() {
         MFList.clear();
-        byte[] Decrypt = fe.LoadbitFile(SaveFilelocation);
+        byte[] Decrypt = new byte[0];
+        Decrypt = fe.LoadbitFile(SaveFilelocation);
         Decrypt = Encryption.Decryption(Decrypt, SecretKey);
         String sDecrypt = new String(Decrypt);
         String[] Decrypted = sDecrypt.replace("!@", "\\n").split("\\n");
