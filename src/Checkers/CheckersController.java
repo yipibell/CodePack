@@ -78,23 +78,33 @@ public class CheckersController {
             }
             int x0 = BoardPix(piece.getXnow());
             int y0 = BoardPix(piece.getYnow());
-
+            Piece Checker;
             switch (result.getType()) {
                 case none:
                     piece.CancelMove();
                     break;
                 case move:
-                    piece.Move(newX, newY);
                     if (newY == 7 || newY == 0) {
                         piece.setType(typeInt(piece.getType()) * 2);
+                        Checker = makePiece(piece.getType(), newX, newY);
+                        pieces.getChildren().add(Checker);
+                        board[newX][newY].setPiece(Checker);
+                        board[BoardPix(piece.getXnow())][BoardPix(piece.getYnow())].setPiece(null);
+                        pieces.getChildren().remove(piece);
+                    } else {
+                        piece.Move(newX, newY);
+                        board[x0][y0].setPiece(null);
+                        board[newX][newY].setPiece(piece);
                     }
-                    board[x0][y0].setPiece(null);
-                    board[newX][newY].setPiece(piece);
                     break;
                 case kill:
                     piece.Move(newX, newY);
                     if (newY == 7 || newY == 0) {
                         piece.setType(typeInt(piece.getType()) * 2);
+                        makePiece(piece.getType(), x, y);
+                        board[BoardPix(piece.getXnow())][BoardPix(piece.getYnow())].setPiece(null);
+                        pieces.getChildren().remove(piece);
+                        board[newX][newY].setPiece(makePiece(piece.getType(), x, y));
                     }
                     board[x0][y0].setPiece(null);
                     board[newX][newY].setPiece(piece);

@@ -21,34 +21,18 @@ public class Piece extends StackPane {
 
         if (this.Type == PieceType.White) {
             ellipse.setFill(Color.valueOf("white"));
+            ellipse.setStroke(Color.valueOf("black"));
         } else if (this.Type == PieceType.Blue) {
-            ellipse.setFill(
-                    Color.valueOf("Blue"));
+            ellipse.setFill(Color.valueOf("Blue"));
+            ellipse.setStroke(Color.valueOf("black"));
         } else if (this.Type == PieceType.WhiteChecker) {
             ellipse.setFill(Color.valueOf("white"));
-            Ellipse Checker = new Ellipse(50 * 0.3125, 50 * 0.26);
-            Checker.setFill(Color.valueOf("white"));
-            Checker.setStroke(Color.BLACK);
-            Checker.setStrokeWidth(50 * 0.03);
-
-            Checker.setTranslateX((50 - 50 * 0.3125 * 2) / 2);
-            Checker.setTranslateY((50 - 50 * 0.26 * 2) / 2 * 50 * 0.6);
-
-            getChildren().add(Checker);
+            ellipse.setStroke(Color.valueOf("gold"));
         } else {
             ellipse.setFill(Color.valueOf("Blue"));
-            Ellipse Checker = new Ellipse(50 * 0.3125, 50 * 0.26);
-            Checker.setFill(Color.valueOf("Blue"));
-            Checker.setStroke(Color.BLACK);
-            Checker.setStrokeWidth(50 * 0.03);
-
-            Checker.setTranslateX((50 - 50 * 0.3125 * 2) / 2);
-            Checker.setTranslateY((50 - 50 * 0.26 * 2) / 2 * 50 * 0.6);
-
-            getChildren().add(Checker);
+            ellipse.setStroke(Color.valueOf("gold"));
         }
 
-        ellipse.setStroke(Color.BLACK);
         ellipse.setStrokeWidth(50 * 0.03);
 
         ellipse.setTranslateX((50 - 50 * 0.3125 * 2) / 2);
