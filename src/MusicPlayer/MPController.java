@@ -17,14 +17,13 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.Media;
+import javafx.scene.media.MediaException;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
-import java.time.Duration;
 
 import static javafx.scene.media.MediaPlayer.Status.PLAYING;
 
@@ -81,9 +80,17 @@ public class MPController {
         if (mediaPlayer!=null&&mediaPlayer.getStatus().equals(PLAYING)){mediaPlayer.stop();}
         else{
             playingindex=MP3List.getSelectionModel().getSelectedIndex();
-            mediaPlayer = new MediaPlayer(new Media(new File(MFL.getMFList().get(playingindex).getMusicFileLocation()).toURI().toString()));
-            rep();
-            mediaPlayer.play();
+            try {
+                mediaPlayer = new MediaPlayer(new Media(new File(MFL.getMFList().get(playingindex).getMusicFileLocation()).toURI().toString()));
+                rep();
+                mediaPlayer.play();
+            } catch (MediaException a) {
+                MFL.getMFList().remove(MP3List.getSelectionModel().getSelectedIndex());
+                MFObservableList.remove(MP3List.getSelectionModel().getSelectedItem());
+                MFL.SaveMFList();
+                MP3List.refresh();
+                System.out.println("1");
+            }
         }
     }
 
@@ -93,6 +100,7 @@ public class MPController {
         if (playingindex+1>MFL.getMFList().size()-1){playingindex=0;}
         else {playingindex++;}
         mediaPlayer = new MediaPlayer(new Media(new File(MFL.getMFList().get(playingindex).getMusicFileLocation()).toURI().toString()));
+        rep();
         mediaPlayer.play();
     }
 

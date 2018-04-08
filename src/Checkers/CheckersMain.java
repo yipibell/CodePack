@@ -15,9 +15,11 @@ public class CheckersMain extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/Checkers/Checkers.fxml"));
-        primaryStage.setTitle("H");
-        primaryStage.setScene(new Scene(root, 700, 400));
+        primaryStage.setTitle("Checkers");
+        primaryStage.setScene(new Scene(root, 400, 425));
         primaryStage.setResizable(false);
         primaryStage.show();
     }
+
+
 }

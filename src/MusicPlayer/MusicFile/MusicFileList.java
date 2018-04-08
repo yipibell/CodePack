@@ -12,23 +12,23 @@ public class MusicFileList {
 
     private String SecretKey="MP3";
     private FileEditing fe = new FileEditing();
-    private String SaveFilelocation = "/Users/why2blue/IdeaProjects/CodePack/src/MusicPlayer/MusicFile/SaveMPList.smp";
-    private String SelectedSaveFilelocation = "/Users/why2blue/IdeaProjects/CodePack/src/MusicPlayer/MusicFile/OperetedMPList.smp";
+    private String SaveFilelocation = "src/MusicPlayer/MusicFile/SaveMPList.smp";
+    private String SelectedSaveFilelocation = "src/MusicPlayer/MusicFile/OperetedMPList.smp";
 
     /*Music File List actions*/
     public void SaveMFList() {
         String saveMF = "";
         for (MusicFile file : MFList) {
-            saveMF += MFToString(file);
+            saveMF = MFToString(file);
         }
-        saveMF.replace(" ", "_");
+        saveMF = saveMF.replace(" ", "_");
         byte[] saveMFList = Encryption.Encryption(saveMF, SecretKey);
         fe.SavebitFile(saveMFList, SaveFilelocation);
     }
 
     public void LoadMFList() {
         MFList.clear();
-        byte[] Decrypt = new byte[0];
+        byte[] Decrypt;
         Decrypt = fe.LoadbitFile(SaveFilelocation);
         Decrypt = Encryption.Decryption(Decrypt, SecretKey);
         String sDecrypt = new String(Decrypt);
@@ -57,7 +57,7 @@ public class MusicFileList {
         String saveMF = "";
         saveMF += index + "|";
         saveMF += MFToString(file);
-        saveMF.replace(" ", "_");
+        saveMF = saveMF.replace(" ", "_");
         byte[] saveMFbyte = Encryption.Encryption(saveMF, SecretKey);
         fe.SavebitFile(saveMFbyte, SelectedSaveFilelocation);
     }
