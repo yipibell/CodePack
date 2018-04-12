@@ -17,6 +17,7 @@
                   <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#ScreenWork" prefHeight="44.0" prefWidth="150.0" text="ScreenWork" />
                   <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#CalculatorScreen" prefHeight="44.0" prefWidth="150.0" text="CalculatorScreen" />
                   <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#MPScreen" prefHeight="44.0" prefWidth="150.0" text="MusicPlayerScreen" />
+                  <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Cheacker" prefHeight="44.0" prefWidth="150.0" text="Cheacker" />
                   <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Close" prefHeight="44.0" prefWidth="150.0" text="Close" />
                </children>
             </VBox>

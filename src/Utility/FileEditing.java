@@ -5,6 +5,7 @@ import javafx.fxml.LoadException;
 import java.io.*;
 
 public class FileEditing {
+    private String ErrorFilelocation = "Java/src/Utility/Error/Error.txt";
     /*String*/
     public void export(String filename, String save) {
         try (FileOutputStream fos = new FileOutputStream(filename);
@@ -12,6 +13,16 @@ public class FileEditing {
             writer.println("" + save);
         } catch (IOException ioe) {
             System.out.println("Problem saving file " + filename);
+            ioe.printStackTrace();
+        }
+    }
+
+    public void ErrorExport(String save) {
+        try (FileOutputStream fos = new FileOutputStream(ErrorFilelocation);
+             PrintWriter writer = new PrintWriter(fos)) {
+            writer.println("" + save);
+        } catch (IOException ioe) {
+            System.out.println("Problem saving file " + ErrorFilelocation);
             ioe.printStackTrace();
         }
     }

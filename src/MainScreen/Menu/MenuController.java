@@ -47,6 +47,11 @@ public class MenuController {
     }
 
     @FXML
+    void Cheacker(ActionEvent event) {
+        SwichToScreen("/Checkers/Checkers.fxml","Clock");
+    }
+
+    @FXML
     void TimerScreen(ActionEvent event) {
         SwichToScreen("/TimerScreen/Timer.fxml","Timer");
     }
