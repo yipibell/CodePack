@@ -22,46 +22,46 @@ public class MenuController {
 
     @FXML
     void ScreenWork(ActionEvent event) {
-        SwichToScreen("/ScreenWorks/FirstSreen/FirstScreen.fxml","ScreenWork");
+        SwichToScreen("/ScreenWorks/FirstSreen/FirstScreen.fxml", "ScreenWork");
     }
 
     @FXML
-    void TabScreen(ActionEvent event){
-        SwichToScreen("/TabScreen/TadScreenFXML.fxml","TabScreen");
+    void TabScreen(ActionEvent event) {
+        SwichToScreen("/TabScreen/TadScreenFXML.fxml", "TabScreen");
     }
 
     @FXML
-    void EncryptionScreen(ActionEvent event){
-        SwichToScreen("/EncryptionScreen/EncryptionScreen.fxml","EncryptionScreen");
+    void EncryptionScreen(ActionEvent event) {
+        SwichToScreen("/EncryptionScreen/EncryptionScreen.fxml", "EncryptionScreen");
     }
 
     @FXML
     void CalculatorScreen(ActionEvent event) {
-        SwichToScreen("/CalculatorScreen/Calculator.fxml","Calculator");
+        SwichToScreen("/CalculatorScreen/Calculator.fxml", "Calculator");
     }
 
 
     @FXML
     void ClockScreen(ActionEvent event) {
-        SwichToScreen("/ClockScreen/Clock.fxml","Clock");
+        SwichToScreen("/ClockScreen/Clock.fxml", "Clock");
     }
 
     @FXML
     void Cheacker(ActionEvent event) {
-        SwichToScreen("/Checkers/Checkers.fxml","Clock");
+        SwichToScreen("/Checkers/Checkers.fxml", "Clock");
     }
 
     @FXML
     void TimerScreen(ActionEvent event) {
-        SwichToScreen("/TimerScreen/Timer.fxml","Timer");
+        SwichToScreen("/TimerScreen/Timer.fxml", "Timer");
     }
 
     @FXML
     void MPScreen(ActionEvent event) {
-        SwichToScreen("/MusicPlayer/MP.fxml","Music Player");
+        SwichToScreen("/MusicPlayer/MP.fxml", "Music Move");
     }
 
-    private void SwichToScreen(String Path,String ScreenName){
+    private void SwichToScreen(String Path, String ScreenName) {
         try {
             Stage stage = (Stage) Menu.getScene().getWindow();
             Parent parent = FXMLLoader.load(getClass().getResource(Path));

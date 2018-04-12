@@ -8,17 +8,16 @@ import javafx.stage.Stage;
 
 public class ClockMain extends Application {
 
+    public static void main(String[] args) {
+        launch(args);
+    }
+
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/ClockScreen/Clock.fxml"));
         primaryStage.setTitle("Hello World");
         primaryStage.setScene(new Scene(root, 260, 220));
         primaryStage.setResizable(false);
         primaryStage.show();
-    }
-
-
-    public static void main(String[] args) {
-        launch(args);
     }
 }

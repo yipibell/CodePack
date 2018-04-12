@@ -5,11 +5,7 @@ import Utility.FileEditing;
 import Utility.SwichWindow;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 
@@ -30,12 +26,12 @@ public class EncryptionScreenController {
     private TextField Decrypt;
 
     @FXML
-    private void On(ActionEvent event) throws Exception {
-        byte[] save = encryption.Encryption(Input.getText(), SecretKey);
+    private void On(ActionEvent event) {
+        byte[] save = Encryption.Encryption(Input.getText(), SecretKey);
         fe.SavebitFile(save, SaveFilelocation);
-        Encrypt.setText(""+save);
+        Encrypt.setText("" + save);
         byte[] Load = fe.LoadbitFile(SaveFilelocation);
-        Load = encryption.Decryption(Load, SecretKey);
+        Load = Encryption.Decryption(Load, SecretKey);
         String sDecrypt = new String(Load);
         Decrypt.setText(sDecrypt);
     }

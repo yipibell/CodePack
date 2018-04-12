@@ -28,42 +28,38 @@ import java.io.IOException;
 import static javafx.scene.media.MediaPlayer.Status.PLAYING;
 
 public class MPController {
+    private static MediaPlayer mediaPlayer;
     @FXML
     private AnchorPane MainScreen;
-
     @FXML
     private ListView<String> MP3List;
-
     @FXML
-    private  CheckBox repeat;
-
+    private CheckBox repeat;
     /*List*/
     private ObservableList<String> MFObservableList = FXCollections.observableArrayList();
-    private MusicFileList MFL=new MusicFileList();
 
     /*initialize*/
+    private MusicFileList MFL = new MusicFileList();
+    /*Actions*/
+    private FileEditing fe = new FileEditing();
+    private String ErrorFilelocation = "Java/src/Utility/Error/Error.txt";
+    private OpenNewWindow open = new OpenNewWindow();
+    private CommonCommands CC = new CommonCommands();
+    private int playingindex = -1;
 
     @FXML
     public void initialize() {
         ListLoad();
     }
 
-    private void ListLoad(){
+    private void ListLoad() {
         MFL.LoadMFList();
-        for (MusicFile mf:MFL.getMFList()){
+        for (MusicFile mf : MFL.getMFList()) {
             MFObservableList.add(mf.getMusicFileName());
         }
         MP3List.setItems(MFObservableList);
         MP3List.refresh();
     }
-
-    /*Actions*/
-    private FileEditing fe = new FileEditing();
-    private String ErrorFilelocation = "Java/src/Utility/Error/Error.txt";
-    private OpenNewWindow open = new OpenNewWindow();
-    private CommonCommands CC=new CommonCommands();
-    private static MediaPlayer mediaPlayer;
-    private int playingindex=-1;
 
     @FXML
     void Back(ActionEvent event) throws IOException {
@@ -76,10 +72,13 @@ public class MPController {
 
     @FXML
     void Play(ActionEvent event) {
-        if (playingindex<0){playingindex=0;}
-        if (mediaPlayer!=null&&mediaPlayer.getStatus().equals(PLAYING)){mediaPlayer.stop();}
-        else{
-            playingindex=MP3List.getSelectionModel().getSelectedIndex();
+        if (playingindex < 0) {
+            playingindex = 0;
+        }
+        if (mediaPlayer != null && mediaPlayer.getStatus().equals(PLAYING)) {
+            mediaPlayer.stop();
+        } else {
+            playingindex = MP3List.getSelectionModel().getSelectedIndex();
             try {
                 mediaPlayer = new MediaPlayer(new Media(new File(MFL.getMFList().get(playingindex).getMusicFileLocation()).toURI().toString()));
                 rep();
@@ -96,9 +95,14 @@ public class MPController {
 
     @FXML
     void PlayNext(ActionEvent event) {
-        if (mediaPlayer!=null&&mediaPlayer.getStatus().equals(PLAYING)){mediaPlayer.stop();}
-        if (playingindex+1>MFL.getMFList().size()-1){playingindex=0;}
-        else {playingindex++;}
+        if (mediaPlayer != null && mediaPlayer.getStatus().equals(PLAYING)) {
+            mediaPlayer.stop();
+        }
+        if (playingindex + 1 > MFL.getMFList().size() - 1) {
+            playingindex = 0;
+        } else {
+            playingindex++;
+        }
         mediaPlayer = new MediaPlayer(new Media(new File(MFL.getMFList().get(playingindex).getMusicFileLocation()).toURI().toString()));
         rep();
         mediaPlayer.play();
@@ -113,8 +117,8 @@ public class MPController {
             open.LoadNewWindow(("/Utility/Error/Error.fxml"), "Error", null);
         } else {
             if (CC.getFileType(Chosen).equalsIgnoreCase("mp3")) {
-                MFObservableList.add(Chosen.getName().substring(Chosen.getName().lastIndexOf('/')+1));
-                MFL.AddMusicFile(new MusicFile(Chosen.getPath(),Chosen.getName().substring(Chosen.getName().lastIndexOf('/')+1)));
+                MFObservableList.add(Chosen.getName().substring(Chosen.getName().lastIndexOf('/') + 1));
+                MFL.AddMusicFile(new MusicFile(Chosen.getPath(), Chosen.getName().substring(Chosen.getName().lastIndexOf('/') + 1)));
                 MFL.SaveMFList();
             } else {
                 System.out.println("Thet is a wrong format file");
@@ -124,9 +128,9 @@ public class MPController {
 
     public void ReName(ActionEvent actionEvent) {
         if (SelectChecker(MP3List.getSelectionModel().getSelectedItem())) {
-            MFL.SaveMF(MFL.getMFList().get(MP3List.getSelectionModel().getSelectedIndex()),MP3List.getSelectionModel().getSelectedIndex() );
+            MFL.SaveMF(MFL.getMFList().get(MP3List.getSelectionModel().getSelectedIndex()), MP3List.getSelectionModel().getSelectedIndex());
             Stage stage = (Stage) (MainScreen.getScene().getWindow());
-            open.LoadNewWindow("/MusicPlayer/Actions/ReName.fxml","ReName",null);
+            open.LoadNewWindow("/MusicPlayer/Actions/ReName.fxml", "ReName", null);
         }
     }
 
@@ -152,8 +156,8 @@ public class MPController {
         return valid;
     }
 
-    private void rep(){
-        if (repeat.isSelected()){
+    private void rep() {
+        if (repeat.isSelected()) {
             mediaPlayer.setCycleCount(10000);
         }
     }

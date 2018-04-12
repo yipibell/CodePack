@@ -105,13 +105,22 @@ public class CheckersController {
                         board[BoardPix(piece.getXnow())][BoardPix(piece.getYnow())].setPiece(null);
                         pieces.getChildren().remove(piece);
                         board[newX][newY].setPiece(makePiece(piece.getType(), x, y));
+                    } else {
+                        board[x0][y0].setPiece(null);
+                        board[newX][newY].setPiece(piece);
                     }
-                    board[x0][y0].setPiece(null);
-                    board[newX][newY].setPiece(piece);
 
                     Piece deadPiece = result.getPiece();
                     board[BoardPix(deadPiece.getXnow())][BoardPix(deadPiece.getYnow())].setPiece(null);
                     pieces.getChildren().remove(deadPiece);
+
+                    if (board[newX + 1][newY + 1].Contains() && !board[newX + 2][newY + 2].Contains() ||
+                            board[newX - 1][newY + 1].Contains() && !board[newX - 2][newY + 2].Contains() ||
+                            board[newX + 1][newY - 1].Contains() && !board[newX + 2][newY - 2].Contains() ||
+                            board[newX - 1][newY - 1].Contains() && !board[newX - 2][newY - 2].Contains()) {
+                        lastpiece.setType(typeInt(lastpiece.getType()) * -1);
+
+                    }
                     break;
             }
 
@@ -124,15 +133,23 @@ public class CheckersController {
     }
 
     private MoveRules tryMove(Piece piece, int newX, int newY) {
-        if (board[newX][newY].Contains() || (newX + newY) % 2 == 0) {
-            return new MoveRules(MoveType.none);
-        }
-
         if (lastpiece != null) {
             if (typeInt(lastpiece.getType()) * typeInt(piece.getType()) > 0) {
                 return new MoveRules(MoveType.none);
             }
+            if (board[newX + 1][newY + 1].Contains() && !board[newX + 2][newY + 2].Contains() ||
+                    board[newX - 1][newY + 1].Contains() && !board[newX - 2][newY + 2].Contains() ||
+                    board[newX + 1][newY - 1].Contains() && !board[newX + 2][newY - 2].Contains() ||
+                    board[newX - 1][newY - 1].Contains() && !board[newX - 2][newY - 2].Contains()) {
+                lastpiece.setType(typeInt(lastpiece.getType()) * -1);
+
+            }
         }
+
+        if (board[newX][newY].Contains() || (newX + newY) % 2 == 0) {
+            return new MoveRules(MoveType.none);
+        }
+
         int x0 = BoardPix(piece.getXnow());
         int y0 = BoardPix(piece.getYnow());
 
@@ -196,11 +213,16 @@ public class CheckersController {
         return intType;
     }
 
+    /*Actions*/
     public void restart(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage) Main.getScene().getWindow();
         Parent parent = FXMLLoader.load(getClass().getResource("/Checkers/Checkers.fxml"));
         Scene scene = new Scene(parent);
         stage.setTitle("Checkers");
         stage.setScene(scene);
+    }
+
+    public void UndoLestMove() {
+
     }
 }

@@ -8,7 +8,6 @@ public class Piece extends StackPane {
     private PieceType Type;
 
     private double Xnow;
-
     private double Ynow;
     private double newX;
     private double newY;

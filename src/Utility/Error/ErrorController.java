@@ -33,7 +33,7 @@ public class ErrorController {
         String error = "";
         switch (ErrorNumber) {
             case 0:
-                error = "Error Number #00, You Must check at lest one login to export";
+                error = "Error Number #00, You Must check at lest one object to export";
                 break;
             case 1:
                 error = "Error Number #01, You Must Select a location";

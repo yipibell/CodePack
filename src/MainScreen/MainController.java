@@ -40,8 +40,8 @@ public class MainController {
         });
     }
 
-    private void righter(){
-        CheckBox box=new CheckBox();
+    private void righter() {
+        CheckBox box = new CheckBox();
         box.setSelected(true);    
 /*        for (int i=0;i<=1;i++){
             if (i<10){

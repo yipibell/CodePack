@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:id="Main" maxHeight="-Infinity" maxWidth="-Infinity"
+            minHeight="-Infinity" minWidth="-Infinity" prefHeight="87.0" prefWidth="446.0"
+            xmlns="http://javafx.com/javafx/9.0.1" fx:controller="HtmlBuilder.Actions.SaveController">
+    <children>
+        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="14.0" text="Enter the page name:"
+               AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+            <font>
+                <Font size="15.0"/>
+            </font>
+        </Label>
+        <TextField fx:id="Location" editable="false" layoutX="14.0" layoutY="26.0" prefHeight="25.0" prefWidth="341.0"
+                   promptText="Location" AnchorPane.leftAnchor="70.0" AnchorPane.rightAnchor="100.0"
+                   AnchorPane.topAnchor="25.0"/>
+        <TextField fx:id="Name" layoutX="14.0" layoutY="31.0" prefHeight="25.0" prefWidth="300.0"
+                   promptText="all file names will automatically set to &quot;.html&quot;." AnchorPane.leftAnchor="70.0"
+                   AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="55.0"/>
+        <Button layoutX="368.0" layoutY="25.0" mnemonicParsing="false" onAction="#Browse" text="Browse "
+                AnchorPane.leftAnchor="350.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="25.0"/>
+        <Label layoutX="5.0" layoutY="29.0" prefHeight="20.0" prefWidth="60.0" text="Location:"
+               AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="25.0">
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </Label>
+        <Label layoutX="5.0" layoutY="58.0" prefHeight="20.0" prefWidth="60.0" text="Page name:"
+               AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="58.0">
+            <font>
+                <Font size="11.0"/>
+            </font>
+        </Label>
+        <Button layoutX="378.0" layoutY="35.0" mnemonicParsing="false" onAction="#Save" text="Save"
+                AnchorPane.leftAnchor="350.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="55.0"/>
+    </children>
+</AnchorPane>

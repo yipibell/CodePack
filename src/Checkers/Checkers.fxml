@@ -11,17 +11,17 @@
     <center>
         <Pane fx:id="field" prefHeight="400" prefWidth="400"/>
     </center>
-   <top>
-       <MenuBar maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0"
-                prefWidth="400.0" BorderPane.alignment="CENTER">
-        <menus>
-          <Menu mnemonicParsing="false" text="Main">
-            <items>
-              <MenuItem mnemonicParsing="false" onAction="#Back" text="Close" />
-                <MenuItem mnemonicParsing="false" onAction="#restart" text="Restart"/>
-            </items>
-          </Menu>
-        </menus>
-      </MenuBar>
-   </top>
+    <top>
+        <MenuBar maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0"
+                 prefWidth="400.0" BorderPane.alignment="CENTER">
+            <menus>
+                <Menu mnemonicParsing="false" text="Main">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#Back" text="Close"/>
+                        <MenuItem mnemonicParsing="false" onAction="#restart" text="Restart"/>
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+    </top>
 </BorderPane>

@@ -2,10 +2,14 @@ package Utility;
 
 import javafx.fxml.LoadException;
 
-import java.io.*;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 public class FileEditing {
-    private String ErrorFilelocation = "Java/src/Utility/Error/Error.txt";
+    private String ErrorFilelocation = "src/Utility/Error/Error.fxml";
+
     /*String*/
     public void export(String filename, String save) {
         try (FileOutputStream fos = new FileOutputStream(filename);
@@ -28,17 +32,15 @@ public class FileEditing {
     }
 
     public String Import(String filename) {
-        try (FileInputStream fis = new FileInputStream(filename);
-             BufferedReader reader = new BufferedReader(new InputStreamReader(fis))) {
-            String Load;
-            if ((Load = reader.readLine()) != null) {
-                return Load;
-            }
+        String Load = "";
+        try {
+            FileInputStream fis = new FileInputStream(filename);
+            Load += new String(fis.readAllBytes());
         } catch (IOException ioe) {
             System.out.println("Problem saving file " + filename);
             ioe.printStackTrace();
         }
-        return null;
+        return Load;
     }
 
     /*bytes*/

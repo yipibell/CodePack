@@ -1,6 +1,5 @@
 package HtmlBuilder;
 
-import MusicPlayer.MusicFile.MusicFile;
 import Utility.CommonCommands;
 import Utility.FileEditing;
 import Utility.OpenNewWindow;
@@ -18,6 +17,12 @@ import java.io.File;
 import java.io.IOException;
 
 public class HtmlBuilderController {
+    private FileEditing fe = new FileEditing();
+    private OpenNewWindow open = new OpenNewWindow();
+    private CommonCommands CC = new CommonCommands();
+    private String BuilderCode = "src/HtmlBuilder/HtmlBuilder.code";
+    private File Chosen;
+
     @FXML
     private BorderPane Main;
 
@@ -27,45 +32,48 @@ public class HtmlBuilderController {
 
     /*help*/
 
+    /*file*/
+
     @FXML
     void about(ActionEvent event) {
 
     }
-
-    /*file*/
 
     @FXML
     void NewFile(ActionEvent event) {
 
     }
 
-    private FileEditing fe = new FileEditing();
-    private OpenNewWindow open = new OpenNewWindow();
-    private CommonCommands CC=new CommonCommands();
     @FXML
     void open(ActionEvent event) {
         FileChooser fc = new FileChooser();
-        File Chosen = fc.showOpenDialog(null);
+        Chosen = fc.showOpenDialog(null);
+
         if (Chosen == null) {
             fe.ErrorExport("1");
             open.LoadNewWindow(("/Utility/Error/Error.fxml"), "Error", null);
         } else {
             if (CC.getFileType(Chosen).equalsIgnoreCase("html")) {
-                String html=fe.Import(Chosen.getName());
+                String html = fe.Import(Chosen.getAbsolutePath());
                 Code.setText(html);
             } else {
                 System.out.println("That is a wrong format file");
             }
         }
     }
+
     @FXML
     void save(ActionEvent event) {
-
+        if (Chosen == null) {
+        } else {
+            fe.export(Chosen.getAbsolutePath(), Code.getText());
+        }
     }
 
     @FXML
     void saveAs(ActionEvent event) {
-
+        fe.export(BuilderCode, Code.getText());
+        open.LoadNewWindow("/HtmlBuilder/Actions/Save.fxml", "Save as?", new Stage());
     }
 
     @FXML

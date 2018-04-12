@@ -8,12 +8,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MusicFileList {
-    private List<MusicFile> MFList=new ArrayList<>();
+    private List<MusicFile> MFList = new ArrayList<>();
 
-    private String SecretKey="MP3";
+    private String SecretKey = "MP3";
     private FileEditing fe = new FileEditing();
     private String SaveFilelocation = "src/MusicPlayer/MusicFile/SaveMPList.smp";
     private String SelectedSaveFilelocation = "src/MusicPlayer/MusicFile/OperetedMPList.smp";
+    /*Selected music file actions*/
+    private int Index;
+    private CommonCommands CC = new CommonCommands();
 
     /*Music File List actions*/
     public void SaveMFList() {
@@ -36,7 +39,7 @@ public class MusicFileList {
         for (String decrypted : Decrypted) {
             if (decrypted.equals("")) break;
             String[] arg = decrypted.split("\\|");
-            AddMusicFile(new MusicFile((arg[0]),(arg[1])));
+            AddMusicFile(new MusicFile((arg[0]), (arg[1])));
         }
     }
 
@@ -44,15 +47,11 @@ public class MusicFileList {
         return MFList;
     }
 
-    public void AddMusicFile(MusicFile mf){
+    public void AddMusicFile(MusicFile mf) {
         MFList.add(mf);
         SaveMFList();
     }
 
-
-    /*Selected music file actions*/
-    private int Index;
-    private CommonCommands CC=new CommonCommands();
     public void SaveMF(MusicFile file, int index) {
         String saveMF = "";
         saveMF += index + "|";
@@ -63,7 +62,7 @@ public class MusicFileList {
     }
 
     public MusicFile LoadMF() {
-        MusicFile musicFile = (new MusicFile( "error", "error"));
+        MusicFile musicFile = (new MusicFile("error", "error"));
         byte[] Decrypt = fe.LoadbitFile(SelectedSaveFilelocation);
         Decrypt = Encryption.Decryption(Decrypt, SecretKey);
         String sDecrypt = new String(Decrypt);
@@ -72,7 +71,7 @@ public class MusicFileList {
             if (decrypted.equals("")) break;
             String[] arg = decrypted.split("\\|");
             musicFile = (new MusicFile(arg[1], arg[2]));
-            Index=CC.SetNum(arg[0]);
+            Index = CC.SetNum(arg[0]);
         }
         return musicFile;
     }

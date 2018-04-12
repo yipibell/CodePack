@@ -46,11 +46,10 @@ public class ClockController {
                     Time.getYear();
             this.Date.setText(Date);
             Day.setText("" + Time.getDayOfWeek());
-            AsString.setText(""+Time.format(DateTimeFormatter.ofPattern("YYYY:MM:dd:HH:mm")));
+            AsString.setText("" + Time.format(DateTimeFormatter.ofPattern("YYYY:MM:dd:HH:mm")));
         }));
         Timeline.play();
     }
-
 
 
     @FXML

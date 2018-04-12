@@ -1,27 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.VBox?>
-
-<VBox fx:id="Menu" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainScreen.Menu.MenuController">
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:id="Menu" xmlns="http://javafx.com/javafx/9.0.1"
+      fx:controller="MainScreen.Menu.MenuController">
     <children>
-      <ScrollPane prefWidth="165.0">
-         <content>
-            <VBox fx:id="Menu1">
-               <children>
-                  <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#TabScreen" prefHeight="44.0" prefWidth="150.0" text="TabScreen" />
-                  <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#EncryptionScreen" prefHeight="44.0" prefWidth="150.0" text="EncryptionScreen" />
-                  <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#ClockScreen" prefHeight="44.0" prefWidth="150.0" text="ClockScreen" />
-                  <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#TimerScreen" prefHeight="44.0" prefWidth="150.0" text="TimerScreen" />
-                  <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#ScreenWork" prefHeight="44.0" prefWidth="150.0" text="ScreenWork" />
-                  <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#CalculatorScreen" prefHeight="44.0" prefWidth="150.0" text="CalculatorScreen" />
-                  <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#MPScreen" prefHeight="44.0" prefWidth="150.0" text="MusicPlayerScreen" />
-                  <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Cheacker" prefHeight="44.0" prefWidth="150.0" text="Cheacker" />
-                  <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Close" prefHeight="44.0" prefWidth="150.0" text="Close" />
-               </children>
-            </VBox>
-         </content>
-      </ScrollPane>
+        <ScrollPane prefWidth="165.0">
+            <content>
+                <VBox fx:id="Menu1">
+                    <children>
+                        <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+                                mnemonicParsing="false" onAction="#TabScreen" prefHeight="44.0" prefWidth="150.0"
+                                text="TabScreen"/>
+                        <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+                                mnemonicParsing="false" onAction="#EncryptionScreen" prefHeight="44.0" prefWidth="150.0"
+                                text="EncryptionScreen"/>
+                        <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+                                mnemonicParsing="false" onAction="#ClockScreen" prefHeight="44.0" prefWidth="150.0"
+                                text="ClockScreen"/>
+                        <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+                                mnemonicParsing="false" onAction="#TimerScreen" prefHeight="44.0" prefWidth="150.0"
+                                text="TimerScreen"/>
+                        <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+                                mnemonicParsing="false" onAction="#ScreenWork" prefHeight="44.0" prefWidth="150.0"
+                                text="ScreenWork"/>
+                        <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+                                mnemonicParsing="false" onAction="#CalculatorScreen" prefHeight="44.0" prefWidth="150.0"
+                                text="CalculatorScreen"/>
+                        <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+                                mnemonicParsing="false" onAction="#MPScreen" prefHeight="44.0" prefWidth="150.0"
+                                text="MusicPlayerScreen"/>
+                        <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+                                mnemonicParsing="false" onAction="#Cheacker" prefHeight="44.0" prefWidth="150.0"
+                                text="Cheacker"/>
+                        <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+                                mnemonicParsing="false" onAction="#Close" prefHeight="44.0" prefWidth="150.0"
+                                text="Close"/>
+                    </children>
+                </VBox>
+            </content>
+        </ScrollPane>
     </children>
 </VBox>
