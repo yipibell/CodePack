@@ -13,6 +13,7 @@ import java.io.File;
 
 public class SaveController {
     private String BuilderCode = "src/HtmlBuilder/HtmlBuilder.code";
+    private String ErrorFilelocation = "src/Utility/Error/Error.txt";
     private OpenNewWindow open = new OpenNewWindow();
     private FileEditing fe = new FileEditing();
     private File dir;
@@ -28,7 +29,7 @@ public class SaveController {
 
     @FXML
     public void initialize() {
-        Code = fe.Import(BuilderCode);
+        Code = fe.ImportLine(BuilderCode);
         DirectoryChooser directoryChooser = new DirectoryChooser();
         directoryChooser.setTitle("Where do you want to save that page?");
         directoryChooser.setInitialDirectory(new File(System.getProperty("user.home")));
@@ -49,12 +50,12 @@ public class SaveController {
     @FXML
     void Save(ActionEvent event) {
         if (!Location.getText().equalsIgnoreCase("")) {
-            fe.export(Location.getText(), Code);
+            fe.export(Location.getText() + Name.getText() + ".html", Code);
             Stage stage = (Stage) Main.getScene().getWindow();
             stage.close();
         } else {
             fe.ErrorExport("1");
-            open.LoadNewWindow(("src/Utility/Error/Error.fxml"), "Error", null);
+            open.LoadNewWindow(("/Utility/Error/Error.fxml"), "Error", null);
         }
     }
 }

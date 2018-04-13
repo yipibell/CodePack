@@ -31,9 +31,7 @@ public class SecundScreenController {
     }
 
     private String started() {
-        String line = "";
-        line = fe.Import(SaveFilelocation);
-        return line;
+        return fe.ImportLine(SaveFilelocation);
     }
 
     @FXML

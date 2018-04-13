@@ -21,6 +21,7 @@ public class HtmlBuilderController {
     private OpenNewWindow open = new OpenNewWindow();
     private CommonCommands CC = new CommonCommands();
     private String BuilderCode = "src/HtmlBuilder/HtmlBuilder.code";
+
     private File Chosen;
 
     @FXML
@@ -28,11 +29,6 @@ public class HtmlBuilderController {
 
     @FXML
     private TextArea Code;
-
-
-    /*help*/
-
-    /*file*/
 
     @FXML
     void about(ActionEvent event) {
@@ -65,6 +61,7 @@ public class HtmlBuilderController {
     @FXML
     void save(ActionEvent event) {
         if (Chosen == null) {
+            saveAs(event);
         } else {
             fe.export(Chosen.getAbsolutePath(), Code.getText());
         }
@@ -84,8 +81,6 @@ public class HtmlBuilderController {
         stage.setTitle("Main");
         stage.setScene(scene);
     }
-
-    /*edit*/
 
     @FXML
     public void delete(ActionEvent event) {

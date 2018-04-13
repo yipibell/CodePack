@@ -1,14 +1,19 @@
 package Utility;
 
-import javafx.fxml.LoadException;
-
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 
 public class FileEditing {
-    private String ErrorFilelocation = "src/Utility/Error/Error.fxml";
+    private String ErrorFilelocation = "src/Utility/Error/Error.txt";
+
+    public void ErrorExport(String save) {
+        try (FileOutputStream fos = new FileOutputStream(ErrorFilelocation);
+             PrintWriter writer = new PrintWriter(fos)) {
+            writer.println("" + save);
+        } catch (IOException ioe) {
+            System.out.println("Problem saving file " + ErrorFilelocation);
+            ioe.printStackTrace();
+        }
+    }
 
     /*String*/
     public void export(String filename, String save) {
@@ -21,26 +26,31 @@ public class FileEditing {
         }
     }
 
-    public void ErrorExport(String save) {
-        try (FileOutputStream fos = new FileOutputStream(ErrorFilelocation);
-             PrintWriter writer = new PrintWriter(fos)) {
-            writer.println("" + save);
-        } catch (IOException ioe) {
-            System.out.println("Problem saving file " + ErrorFilelocation);
-            ioe.printStackTrace();
-        }
-    }
-
-    public String Import(String filename) {
-        String Load = "";
-        try {
-            FileInputStream fis = new FileInputStream(filename);
-            Load += new String(fis.readAllBytes());
+    public String ImportLine(String filename) {
+        try (FileInputStream fis = new FileInputStream(filename);
+             BufferedReader reader = new BufferedReader(new InputStreamReader(fis))) {
+            String Load;
+            if ((Load = reader.readLine()) != null) {
+                return Load;
+            }
         } catch (IOException ioe) {
             System.out.println("Problem saving file " + filename);
             ioe.printStackTrace();
         }
-        return Load;
+        return null;
+    }
+
+    public String Import(String filename) {
+        String Load;
+        try {
+            FileInputStream fis = new FileInputStream(filename);
+            Load = new String(fis.readAllBytes());
+            return Load;
+        } catch (IOException ioe) {
+            System.out.println("Problem saving file " + filename);
+            ioe.printStackTrace();
+        }
+        return null;
     }
 
     /*bytes*/
@@ -53,14 +63,11 @@ public class FileEditing {
     }
 
     public byte[] LoadbitFile(String path) {
-        byte[] byts;
         try (FileInputStream fis = new FileInputStream(path)) {
-            return byts = fis.readAllBytes();
-        } catch (LoadException a) {
-            a.printStackTrace();
+            return fis.readAllBytes();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return byts = null;
+        return null;
     }
 }
