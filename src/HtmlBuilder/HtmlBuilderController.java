@@ -54,16 +54,7 @@ public class HtmlBuilderController {
                         "\n" +
                         "  </body>\n" +
                         "</html>");
-        Code.setHtmlText("<!DOCTYPE html>\n" +
-                "<html>\n" +
-                "  <head>\n" +
-                "    <meta charset=\"utf-8\">\n" +
-                "    <title></title>\n" +
-                "  </head>\n" +
-                "  <body>\n" +
-                "\n" +
-                "  </body>\n" +
-                "</html>");
+        Code.setHtmlText("");
     }
 
     @FXML
@@ -87,10 +78,15 @@ public class HtmlBuilderController {
 
     @FXML
     void save(ActionEvent event) {
-        if (Chosen == null) {
-            saveAs(event);
+        if (Checker(HtmlCode.getText(), Code.getHtmlText())) {
+            if (Chosen == null) {
+                saveAs(event);
+            } else {
+                fe.export(Chosen.getAbsolutePath(), HtmlCode.getText());
+            }
         } else {
-            fe.export(Chosen.getAbsolutePath(), HtmlCode.getText());
+            fe.ErrorExport("8");
+            open.LoadNewWindow(("/Utility/Error/Error.fxml"), "Error", null);
         }
     }
 
@@ -130,5 +126,20 @@ public class HtmlBuilderController {
         Scene scene = new Scene(parent);
         stage.setTitle("Main");
         stage.setScene(scene);
+    }
+
+    private Boolean Checker(String Container, String Checked) {
+        String[] CheckedStrings = Checked.split(">+ ");
+        for (String checked : CheckedStrings) {
+            if (!Container.contains(checked)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    @FXML
+    void AddImage(ActionEvent event) {
+        open.LoadNewWindow("/HtmlBuilder/Actions/CodeLibrary/AddImage.fxml", "Add Image", new Stage());
     }
 }

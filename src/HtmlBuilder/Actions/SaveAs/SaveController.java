@@ -36,7 +36,7 @@ public class SaveController {
     @FXML
     public void initialize() {
         setFileTypes();
-        Code = fe.ImportLine(BuilderCode);
+        Code = fe.Import(BuilderCode);
         DirectoryChooser directoryChooser = new DirectoryChooser();
         directoryChooser.setTitle("Where do you want to save that page?");
         directoryChooser.setInitialDirectory(new File(System.getProperty("user.home")));
@@ -46,8 +46,8 @@ public class SaveController {
 
     private void setFileTypes() {
         ObservableList<String> ft = FXCollections.observableArrayList("html", "txt", "css");
-        FileType.setValueFactory(new SpinnerValueFactory.ListSpinnerValueFactory<String>(ft));
-        FileType.getValueFactory().setValue("txt");
+        FileType.setValueFactory(new SpinnerValueFactory.ListSpinnerValueFactory<>(ft));
+        FileType.getValueFactory().setValue("html");
     }
 
     @FXML
@@ -57,7 +57,12 @@ public class SaveController {
         directoryChooser.setTitle("Where do you want to save that page?");
         directoryChooser.setInitialDirectory(new File(System.getProperty("user.home")));
         dir = directoryChooser.showDialog(stage);
-        Location.setText(dir.getAbsolutePath());
+        if (dir == null) {
+            fe.ErrorExport("1");
+            open.LoadNewWindow(("/Utility/Error/Error.fxml"), "Error", null);
+        } else {
+            Location.setText(dir.getAbsolutePath());
+        }
     }
 
     @FXML

@@ -56,6 +56,9 @@ public class ErrorController {
             case 7:
                 error = "Error Number #07, You can't set 2 alarms at the same time";
                 break;
+            case 8:
+                error = "Error Number #08, Not all the text was generated to code";
+                break;
             default:
                 error = "Error not specified";
                 break;
