@@ -57,6 +57,12 @@ public class MenuController {
     }
 
     @FXML
+    void HtmlBuilderScreen(ActionEvent event) {
+        SwichToScreen("/HtmlBuilder/HtmlBuilder.fxml", "Html Builder");
+    }
+
+
+    @FXML
     void MPScreen(ActionEvent event) {
         SwichToScreen("/MusicPlayer/MP.fxml", "Music Move");
     }

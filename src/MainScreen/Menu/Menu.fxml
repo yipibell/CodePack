@@ -34,6 +34,10 @@
                                 mnemonicParsing="false" onAction="#Cheacker" prefHeight="44.0" prefWidth="150.0"
                                 text="Cheacker"/>
                         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+                                mnemonicParsing="false" onAction="#HtmlBuilderScreen" prefHeight="44.0"
+                                prefWidth="150.0"
+                                text="Html Builder"/>
+                        <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
                                 mnemonicParsing="false" onAction="#Close" prefHeight="44.0" prefWidth="150.0"
                                 text="Close"/>
                     </children>

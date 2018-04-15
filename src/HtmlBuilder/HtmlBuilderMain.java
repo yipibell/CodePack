@@ -16,7 +16,7 @@ public class HtmlBuilderMain extends Application {
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/HtmlBuilder/HtmlBuilder.fxml"));
         primaryStage.setTitle("Html Builder");
-        primaryStage.setScene(new Scene(root, 600, 600));
+        primaryStage.setScene(new Scene(root, 800, 600));
         primaryStage.show();
     }
 
