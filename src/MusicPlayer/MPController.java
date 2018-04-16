@@ -4,6 +4,7 @@ package MusicPlayer;
 import MusicPlayer.MusicFile.MusicFile;
 import MusicPlayer.MusicFile.MusicFileList;
 import Utility.CommonCommands;
+import Utility.Error.ErrorAlart;
 import Utility.FileEditing;
 import Utility.OpenNewWindow;
 import javafx.collections.FXCollections;
@@ -42,7 +43,6 @@ public class MPController {
     private MusicFileList MFL = new MusicFileList();
     /*Actions*/
     private FileEditing fe = new FileEditing();
-    private String ErrorFilelocation = "Java/src/Utility/Error/Error.txt";
     private OpenNewWindow open = new OpenNewWindow();
     private CommonCommands CC = new CommonCommands();
     private int playingindex = -1;
@@ -113,8 +113,7 @@ public class MPController {
         FileChooser fc = new FileChooser();
         File Chosen = fc.showOpenDialog(null);
         if (Chosen == null) {
-            fe.export(ErrorFilelocation, "1");
-            open.LoadNewWindow(("/Utility/Error/Error.fxml"), "Error", null);
+            new ErrorAlart(1);
         } else {
             if (CC.getFileType(Chosen).equalsIgnoreCase("mp3")) {
                 MFObservableList.add(Chosen.getName().substring(Chosen.getName().lastIndexOf('/') + 1));
@@ -147,8 +146,7 @@ public class MPController {
     private boolean SelectChecker(Object obj) {
         boolean valid;
         if (obj == null) {
-            fe.export(ErrorFilelocation, "4");
-            open.LoadNewWindow(("/Utility/Error/Error.fxml"), "Error", null);
+            new ErrorAlart(4);
             valid = false;
         } else {
             valid = true;

@@ -1,6 +1,7 @@
 package HtmlBuilder;
 
 import Utility.CommonCommands;
+import Utility.Error.ErrorAlart;
 import Utility.FileEditing;
 import Utility.OpenNewWindow;
 import javafx.event.ActionEvent;
@@ -63,8 +64,7 @@ public class HtmlBuilderController {
         Chosen = fc.showOpenDialog(null);
 
         if (Chosen == null) {
-            fe.ErrorExport("1");
-            open.LoadNewWindow(("/Utility/Error/Error.fxml"), "Error", null);
+            new ErrorAlart(1);
         } else {
             if (CC.getFileType(Chosen).equalsIgnoreCase("html")) {
                 String html = fe.Import(Chosen.getAbsolutePath());
@@ -85,8 +85,7 @@ public class HtmlBuilderController {
                 fe.export(Chosen.getAbsolutePath(), HtmlCode.getText());
             }
         } else {
-            fe.ErrorExport("8");
-            open.LoadNewWindow(("/Utility/Error/Error.fxml"), "Error", null);
+            new ErrorAlart(8);
         }
     }
 

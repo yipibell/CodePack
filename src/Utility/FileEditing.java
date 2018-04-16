@@ -3,17 +3,6 @@ package Utility;
 import java.io.*;
 
 public class FileEditing {
-    private String ErrorFilelocation = "src/Utility/Error/Error.txt";
-
-    public void ErrorExport(String save) {
-        try (FileOutputStream fos = new FileOutputStream(ErrorFilelocation);
-             PrintWriter writer = new PrintWriter(fos)) {
-            writer.println("" + save);
-        } catch (IOException ioe) {
-            System.out.println("Problem saving file " + ErrorFilelocation);
-            ioe.printStackTrace();
-        }
-    }
 
     /*String*/
     public void export(String filename, String save) {

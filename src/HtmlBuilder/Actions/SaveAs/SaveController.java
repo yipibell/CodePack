@@ -1,7 +1,7 @@
 package HtmlBuilder.Actions.SaveAs;
 
+import Utility.Error.ErrorAlart;
 import Utility.FileEditing;
-import Utility.OpenNewWindow;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -17,7 +17,6 @@ import java.io.File;
 
 public class SaveController {
     private String BuilderCode = "src/HtmlBuilder/HtmlBuilder.code";
-    private OpenNewWindow open = new OpenNewWindow();
     private FileEditing fe = new FileEditing();
     private File dir;
     private String Code;
@@ -58,8 +57,7 @@ public class SaveController {
         directoryChooser.setInitialDirectory(new File(System.getProperty("user.home")));
         dir = directoryChooser.showDialog(stage);
         if (dir == null) {
-            fe.ErrorExport("1");
-            open.LoadNewWindow(("/Utility/Error/Error.fxml"), "Error", null);
+            new ErrorAlart(1);
         } else {
             Location.setText(dir.getAbsolutePath());
         }
@@ -72,8 +70,7 @@ public class SaveController {
             Stage stage = (Stage) Main.getScene().getWindow();
             stage.close();
         } else {
-            fe.ErrorExport("1");
-            open.LoadNewWindow(("/Utility/Error/Error.fxml"), "Error", null);
+            new ErrorAlart(1);
         }
     }
 }

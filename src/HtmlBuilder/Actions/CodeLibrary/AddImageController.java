@@ -1,6 +1,7 @@
 package HtmlBuilder.Actions.CodeLibrary;
 
 import Utility.CommonCommands;
+import Utility.Error.ErrorAlart;
 import Utility.FileEditing;
 import Utility.OpenNewWindow;
 import javafx.event.ActionEvent;
@@ -32,8 +33,7 @@ public class AddImageController {
         fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
         file = fileChooser.showOpenDialog(stage);
         if (file == null) {
-            fe.ErrorExport("1");
-            open.LoadNewWindow(("/Utility/Error/Error.fxml"), "Error", null);
+            new ErrorAlart(1);
         } else {
             Location.setText(file.getPath());
         }
