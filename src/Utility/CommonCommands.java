@@ -23,4 +23,14 @@ public class CommonCommands {
         content.putString(string);
         systemClipboard.setContent(content);
     }
+
+    public Boolean Checker(String Container, String Checked, String regex) {
+        String[] CheckedStrings = Checked.split(regex);
+        for (String checked : CheckedStrings) {
+            if (!Container.contains(checked)) {
+                return false;
+            }
+        }
+        return true;
+    }
 }

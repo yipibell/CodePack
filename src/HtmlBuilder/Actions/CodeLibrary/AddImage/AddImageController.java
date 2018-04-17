@@ -1,7 +1,7 @@
-package HtmlBuilder.Actions.CodeLibrary;
+package HtmlBuilder.Actions.CodeLibrary.AddImage;
 
 import Utility.CommonCommands;
-import Utility.Error.ErrorAlart;
+import Utility.ErrorAlart;
 import Utility.FileEditing;
 import Utility.OpenNewWindow;
 import javafx.event.ActionEvent;
@@ -43,10 +43,6 @@ public class AddImageController {
     void GetCode(ActionEvent event) {
         CommonCommands.copy("<img src=" + Location.getText() + ">");
         Close(event);
-    }
-
-    @FXML
-    public void initialize() {
     }
 
     @FXML

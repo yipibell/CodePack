@@ -1,4 +1,4 @@
-package Utility.Error;
+package Utility;
 
 
 import javafx.scene.control.Alert;

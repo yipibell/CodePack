@@ -4,7 +4,7 @@ package MusicPlayer;
 import MusicPlayer.MusicFile.MusicFile;
 import MusicPlayer.MusicFile.MusicFileList;
 import Utility.CommonCommands;
-import Utility.Error.ErrorAlart;
+import Utility.ErrorAlart;
 import Utility.FileEditing;
 import Utility.OpenNewWindow;
 import javafx.collections.FXCollections;

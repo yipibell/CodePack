@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.web.HTMLEditor?>
 <BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:id="Main" maxHeight="-Infinity" maxWidth="-Infinity"
             minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0"
@@ -9,50 +9,36 @@
     <top>
         <MenuBar BorderPane.alignment="CENTER">
                 <Menu mnemonicParsing="false" text="File">
-                        <MenuItem mnemonicParsing="false" onAction="#NewFile" text="New file"/>
-                        <MenuItem mnemonicParsing="false" onAction="#open" text="Open"/>
-                        <MenuItem mnemonicParsing="false" onAction="#save" text="Save"/>
-                        <MenuItem mnemonicParsing="false" onAction="#saveAs" text="Save as..."/>
-                        <MenuItem mnemonicParsing="false" onAction="#Close" text="Close"/>
+                    <MenuItem mnemonicParsing="false" onAction="#NewFile" text="New file"/>
+                    <MenuItem mnemonicParsing="false" onAction="#open" text="Open"/>
+                    <MenuItem mnemonicParsing="false" onAction="#save" text="Save"/>
+                    <MenuItem mnemonicParsing="false" onAction="#saveAs" text="Save as..."/>
+                    <MenuItem mnemonicParsing="false" onAction="#Close" text="Close"/>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Edit">
-                        <MenuItem mnemonicParsing="false" onAction="#GenCode" text="Generate code"/>
-                        <MenuItem mnemonicParsing="false" onAction="#GenText" text="Generate Text"/>
-                        <MenuItem mnemonicParsing="false" onAction="#delete" text="Delete"/>
+                    <MenuItem mnemonicParsing="false" onAction="#GenCode" text="Generate code"/>
+                    <MenuItem mnemonicParsing="false" onAction="#GenText" text="Generate Text"/>
+                    <MenuItem mnemonicParsing="false" onAction="#delete" text="Delete"/>
                 </Menu>
-                <Menu mnemonicParsing="false" text="Help">
-                        <MenuItem mnemonicParsing="false" onAction="#about" text="About"/>
+            <Menu mnemonicParsing="false" text="View">
+                <MenuItem mnemonicParsing="false" onAction="#preview" text="preview page"/>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Help">
+                <MenuItem mnemonicParsing="false" onAction="#about" text="About"/>
                 </Menu>
         </MenuBar>
     </top>
-    <left>
-        <Accordion prefHeight="575.0" prefWidth="187.0" BorderPane.alignment="CENTER">
-            <panes>
-                <TitledPane animated="false" text="Add Things">
-                    <contextMenu>
-                        <ContextMenu>
-                            <items>
-                                <MenuItem mnemonicParsing="false" onAction="#AddImage" text="Add Image"/>
-                            </items>
-                        </ContextMenu>
-                    </contextMenu>
-                </TitledPane>
-                <TitledPane animated="false" text="untitled 2">
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0"/>
-                </TitledPane>
-                <TitledPane animated="false" text="untitled 3">
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0"/>
-                </TitledPane>
-            </panes>
-        </Accordion>
-    </left>
     <center>
         <SplitPane dividerPositions="0.85" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0"
                    BorderPane.alignment="CENTER">
-                <HTMLEditor fx:id="Code"
-                            htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;/body&gt;&lt;/html&gt;"
-                            prefHeight="200.0" prefWidth="506.0"/>
-                <TextArea fx:id="HtmlCode" prefHeight="192.0" prefWidth="611.0"/>
+            <HTMLEditor fx:id="Code"
+                        htmlText="&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;  &lt;title&gt;  &lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;/body&gt;&lt;/html&gt;"
+                        prefHeight="200.0" prefWidth="506.0"/>
+            <TextArea fx:id="HtmlCode" prefHeight="192.0" prefWidth="611.0"/>
         </SplitPane>
     </center>
+    <left>
+        <TreeView fx:id="TreeMenu" onContextMenuRequested="#TreeMenuOnMouseClick" onMouseClicked="#TreeMenuOnMouseClick"
+                  prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER"/>
+    </left>
 </BorderPane>

@@ -1,7 +1,7 @@
 package HtmlBuilder;
 
 import Utility.CommonCommands;
-import Utility.Error.ErrorAlart;
+import Utility.ErrorAlart;
 import Utility.FileEditing;
 import Utility.OpenNewWindow;
 import javafx.event.ActionEvent;
@@ -10,6 +10,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TreeItem;
+import javafx.scene.control.TreeView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.web.HTMLEditor;
 import javafx.stage.FileChooser;
@@ -25,7 +28,6 @@ public class HtmlBuilderController {
     private String BuilderCode = "src/HtmlBuilder/HtmlBuilder.code";
 
     private File Chosen;
-
     @FXML
     private BorderPane Main;
 
@@ -36,10 +38,13 @@ public class HtmlBuilderController {
     private TextArea HtmlCode;
 
     @FXML
+    private TreeView TreeMenu;
+
+    @FXML
     public void initialize() {
         NewFile(new ActionEvent());
+        TreeMenuStarter();
     }
-
 
     @FXML
     void NewFile(ActionEvent event) {
@@ -48,8 +53,8 @@ public class HtmlBuilderController {
                 "<!DOCTYPE html>\n" +
                         "<html>\n" +
                         "  <head>\n" +
-                        "    <meta charset=\"utf-8\">\n" +
-                        "    <title></title>\n" +
+                        "    <title>\n" +
+                        "    </title>\n" +
                         "  </head>\n" +
                         "  <body>\n" +
                         "\n" +
@@ -78,7 +83,7 @@ public class HtmlBuilderController {
 
     @FXML
     void save(ActionEvent event) {
-        if (Checker(HtmlCode.getText(), Code.getHtmlText())) {
+        if (CC.Checker(HtmlCode.getText(), Code.getHtmlText(), ">+ ")) {
             if (Chosen == null) {
                 saveAs(event);
             } else {
@@ -91,8 +96,13 @@ public class HtmlBuilderController {
 
     @FXML
     void saveAs(ActionEvent event) {
-        fe.export(BuilderCode, HtmlCode.getText());
-        open.LoadNewWindow("/HtmlBuilder/Actions/SaveAs/Save.fxml", "Save as?", new Stage());
+        if (CC.Checker(HtmlCode.getText(), Code.getHtmlText(), ">+ ")) {
+            fe.export(BuilderCode, HtmlCode.getText());
+            open.LoadNewWindow("/HtmlBuilder/Actions/SaveAs/Save.fxml", "Save as?", new Stage());
+        } else {
+            new ErrorAlart(8);
+        }
+
     }
 
     @FXML
@@ -119,6 +129,16 @@ public class HtmlBuilderController {
     }
 
     @FXML
+    public void preview(ActionEvent event) {
+        if (CC.Checker(HtmlCode.getText(), Code.getHtmlText(), ">+ ")) {
+            fe.export(BuilderCode, HtmlCode.getText());
+            open.LoadNewWindow("/HtmlBuilder/Actions/Preview/Preview.fxml", "Preview of youre Code", null);
+        } else {
+            new ErrorAlart(8);
+        }
+    }
+
+    @FXML
     void about(ActionEvent event) throws IOException {
         Stage stage = (Stage) Main.getScene().getWindow();
         Parent parent = FXMLLoader.load(getClass().getResource("/Utility/About/About.fxml"));
@@ -127,18 +147,33 @@ public class HtmlBuilderController {
         stage.setScene(scene);
     }
 
-    private Boolean Checker(String Container, String Checked) {
-        String[] CheckedStrings = Checked.split(">+ ");
-        for (String checked : CheckedStrings) {
-            if (!Container.contains(checked)) {
-                return false;
-            }
-        }
-        return true;
+
+    private void TreeMenuStarter() {
+        TreeItem<String> rootItem = new TreeItem<>("Add");
+        rootItem.setExpanded(true);
+
+        TreeItem<String> AddImage = new TreeItem<>("Image");
+        TreeItem<String> AddLink = new TreeItem<>("Link");
+
+        rootItem.getChildren().addAll(AddImage, AddLink);
+        TreeMenu.setRoot(rootItem);
+        Main.setLeft(TreeMenu);
     }
 
-    @FXML
-    void AddImage(ActionEvent event) {
-        open.LoadNewWindow("/HtmlBuilder/Actions/CodeLibrary/AddImage.fxml", "Add Image", new Stage());
+    public void TreeMenuOnMouseClick(MouseEvent event) {
+        if (event.getClickCount() == 2) {
+            TreeItem<String> selected = (TreeItem<String>) TreeMenu.getSelectionModel().getSelectedItem();
+            switch (selected.getValue()) {
+                case "Image":
+                    open.LoadNewWindow("/HtmlBuilder/Actions/CodeLibrary/AddImage/AddImage.fxml", "Add Image", null);
+                    break;
+                case "Link":
+                    open.LoadNewWindow("/HtmlBuilder/Actions/CodeLibrary/AddLink/AddLink.fxml", "Add Link", null);
+                    break;
+                default:
+                    break;
+            }
+        }
     }
+
 }

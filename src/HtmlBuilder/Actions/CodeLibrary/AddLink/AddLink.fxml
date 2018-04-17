@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:id="Main" maxHeight="-Infinity" maxWidth="-Infinity"
+            minHeight="-Infinity" minWidth="-Infinity" prefHeight="130.0" prefWidth="450.0"
+            xmlns="http://javafx.com/javafx/9.0.1"
+            fx:controller="HtmlBuilder.Actions.CodeLibrary.AddLink.AddLinkController">
+    <Label alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="14.0"
+           text="Enter the Image Link or Location" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0"
+           AnchorPane.topAnchor="5.0">
+        <font>
+            <Font size="15.0"/>
+        </font>
+    </Label>
+    <TextField fx:id="Location" layoutX="14.0" layoutY="26.0" prefHeight="25.0" prefWidth="341.0"
+               promptText="Enter the Link you want" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="100.0"
+               AnchorPane.topAnchor="30.0"/>
+    <Button layoutX="368.0" layoutY="25.0" mnemonicParsing="false" onAction="#Browse" text="Chose from pc"
+            AnchorPane.leftAnchor="350.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="30.0"/>
+    <Button layoutX="350.0" layoutY="93.0" mnemonicParsing="false" onAction="#Close" text="Cancel"
+            AnchorPane.leftAnchor="315.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="100.0"/>
+    <Button layoutX="14.0" layoutY="95.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+            minWidth="-Infinity" mnemonicParsing="false" onAction="#GetLinkCode" prefHeight="25.0" prefWidth="100.0"
+            text="Get text link" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="315.0"
+            AnchorPane.topAnchor="100.0"/>
+    <TextField fx:id="Text" layoutX="24.0" layoutY="36.0" prefHeight="25.0" prefWidth="341.0"
+               promptText="Link Object (the object you click to start the link)" AnchorPane.leftAnchor="5.0"
+               AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="65.0"/>
+</AnchorPane>
