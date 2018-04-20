@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:id="Main" maxHeight="-Infinity" maxWidth="-Infinity"
+            minHeight="-Infinity" minWidth="-Infinity" prefHeight="425.0" prefWidth="400.0"
+            xmlns="http://javafx.com/javafx/9.0.1" fx:controller="Snake.SnakeController">
+    <center>
+        <Pane fx:id="field" prefHeight="385" prefWidth="540"/>
+    </center>
+    <top>
+        <MenuBar maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0"
+                 prefWidth="540.0" BorderPane.alignment="CENTER">
+            <Menu mnemonicParsing="false" text="Main">
+                <items>
+                    <MenuItem mnemonicParsing="false" onAction="#Back" text="Close"/>
+                    <MenuItem mnemonicParsing="false" onAction="#restart" text="Restart"/>
+                </items>
+            </Menu>
+        </MenuBar>
+    </top>
+</BorderPane>

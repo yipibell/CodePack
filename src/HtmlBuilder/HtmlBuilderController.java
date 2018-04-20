@@ -149,13 +149,14 @@ public class HtmlBuilderController {
 
 
     private void TreeMenuStarter() {
-        TreeItem<String> rootItem = new TreeItem<>("Add");
+        TreeItem<String> rootItem = new TreeItem<>("Code attributes");
         rootItem.setExpanded(true);
 
-        TreeItem<String> AddImage = new TreeItem<>("Image");
-        TreeItem<String> AddLink = new TreeItem<>("Link");
+        TreeItem<String> ChoseTemplate = new TreeItem<>("Chose Template");
+        TreeItem<String> AddImage = new TreeItem<>("Add Image");
+        TreeItem<String> AddLink = new TreeItem<>("Add Link");
 
-        rootItem.getChildren().addAll(AddImage, AddLink);
+        rootItem.getChildren().addAll(ChoseTemplate, AddImage, AddLink);
         TreeMenu.setRoot(rootItem);
         Main.setLeft(TreeMenu);
     }
@@ -164,11 +165,14 @@ public class HtmlBuilderController {
         if (event.getClickCount() == 2) {
             TreeItem<String> selected = (TreeItem<String>) TreeMenu.getSelectionModel().getSelectedItem();
             switch (selected.getValue()) {
-                case "Image":
+                case "Add Image":
                     open.LoadNewWindow("/HtmlBuilder/Actions/CodeLibrary/AddImage/AddImage.fxml", "Add Image", null);
                     break;
-                case "Link":
+                case "Add Link":
                     open.LoadNewWindow("/HtmlBuilder/Actions/CodeLibrary/AddLink/AddLink.fxml", "Add Link", null);
+                    break;
+                case "Chose Template":
+                    open.LoadNewWindow("/HtmlBuilder/Actions/CodeLibrary/AddLink/AddLink.fxml", "Chose Template", null);
                     break;
                 default:
                     break;
