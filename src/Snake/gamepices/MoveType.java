@@ -1,5 +1,5 @@
 package Snake.gamepices;
 
 public enum MoveType {
-    none, move, kill
+    Up, Down, Left, Right, none
 }

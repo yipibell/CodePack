@@ -4,18 +4,19 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 
+import static Snake.gamepices.MoveType.none;
+
 public class Snake extends StackPane {
-    private SnakeType Type;
     private int Length;
+    private MoveType moveType;
 
-    private double Xnow;
-    private double Ynow;
-    private double newX;
-    private double newY;
+    private int Xnow;
+    private int Ynow;
 
-    public Snake(SnakeType type, int x, int y) {
-        this.Type = type;
+    public Snake(int x, int y) {
         this.Length = 1;
+        this.moveType = none;
+
         Move(x, y);
 
         Rectangle rectangle = new Rectangle();
@@ -26,22 +27,49 @@ public class Snake extends StackPane {
         getChildren().add(rectangle);
     }
 
-    public void Move(int X, int Y) {
-        Xnow = (X + 1) * 15;
-        Ynow = (Y + 1) * 15;
-        relocate(Xnow, Ynow);
+    public void Move(int x, int y) {
+        switch (moveType) {
+            case Up:
+                Xnow = (x) * 15;
+                Ynow = (y + 1) * 15;
+                relocate(Xnow, Ynow);
+                break;
+            case Down:
+                Xnow = (x) * 15;
+                Ynow = (y - 1) * 15;
+                relocate(Xnow, Ynow);
+                break;
+            case Left:
+                Xnow = (x - 1) * 15;
+                Ynow = (y) * 15;
+                relocate(Xnow, Ynow);
+                break;
+            case Right:
+                Xnow = (x + 1) * 15;
+                Ynow = (y) * 15;
+                relocate(Xnow, Ynow);
+                break;
+            case none:
+                Xnow = (x) * 15;
+                Ynow = (y) * 15;
+                relocate(Xnow, Ynow);
+                break;
+        }
     }
 
-    public double getXnow() {
+    public int getXnow() {
         return Xnow;
     }
 
-    public double getYnow() {
+    public int getYnow() {
         return Ynow;
     }
 
-    public SnakeType getType() {
-        return this.Type;
+    public MoveType getMoveType() {
+        return moveType;
     }
 
+    public void setMoveType(MoveType moveType) {
+        this.moveType = moveType;
+    }
 }
