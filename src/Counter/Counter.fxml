@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.VBox?>
+<VBox xmlns:fx="http://javafx.com/fxml/1" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity"
+      minHeight="-Infinity" minWidth="-Infinity" prefHeight="265.0" prefWidth="200.0" spacing="5.0"
+      xmlns="http://javafx.com/javafx/9.0.1" fx:controller="Counter.CounterController">
+    <children>
+        <Label text="כמות שיחות מתחילת היום:"/>
+        <Label fx:id="CallCounter" text="XXX"/>
+        <Button mnemonicParsing="false" onAction="#Add1Call" text="הוסף שיחה"/>
+        <Label text="כמות הפסקות מתחילת היום:"/>
+        <Label fx:id="BreakCounter" text="XX:XX"/>
+        <Button mnemonicParsing="false" onAction="#Break" text="צא\חזור"/>
+        <TextField fx:id="CallsToAdd" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity"
+                   minHeight="-Infinity" minWidth="-Infinity" promptText="כמה שיחות להוסיף?"/>
+        <Button mnemonicParsing="false" onAction="#AddMultipalCalls" text="הוסף  שיחות ידנית"/>
+        <TextField fx:id="BreakToAdd" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity"
+                   minHeight="-Infinity" minWidth="-Infinity" promptText="כמה הפסקות להוסיף?"/>
+        <Button layoutX="10.0" layoutY="128.0" mnemonicParsing="false" onAction="#AddBreaks" text="הוסף  הפסקות ידנית"/>
+    </children>
+</VBox>
